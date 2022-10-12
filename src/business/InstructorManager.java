@@ -1,5 +1,6 @@
 package business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dataAccess.Abstract.InstructorDao;
@@ -12,7 +13,7 @@ public class InstructorManager {
 		this.instructorDao=instructorDao;
 	}
 	
-	List<String> instructorNames;
+	List<String> instructorNames = new ArrayList<String>();
 	
 	public void Add(Instructor instructor) throws Exception {
 		for (String instructorName : instructorNames) {

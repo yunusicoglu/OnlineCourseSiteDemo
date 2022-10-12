@@ -1,5 +1,6 @@
 package business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dataAccess.Abstract.CategoryDao;
@@ -12,7 +13,7 @@ public class CategoryManager {
 		this.categoryDao=categoryDao;
 	}
 	
-	List<String> categoryNames;
+	List<String> categoryNames = new ArrayList<String>();
 	
 	public void Add(Category category) throws Exception {
 		
