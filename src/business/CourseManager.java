@@ -3,15 +3,18 @@ package business;
 import java.util.ArrayList;
 import java.util.List;
 
+import core.logging.Logger;
 import dataAccess.Abstract.CourseDao;
 import enities.Course;
 
 public class CourseManager {
 	
 	private CourseDao courseDao;
+	private Logger[] loggers;
 	
-	public CourseManager(CourseDao courseDao){
+	public CourseManager(CourseDao courseDao, Logger[] loggers){
 		this.courseDao=courseDao;
+		this.loggers = loggers;
 	}
 	
 	List<String> courseNames = new ArrayList<String>();
@@ -30,5 +33,9 @@ public class CourseManager {
 		
 		courseNames.add(course.getName());
 		courseDao.add(course);
+		
+		for (Logger logger : loggers) {
+			logger.log(course.getName() + " kursu");
+		}
 	};				
 }

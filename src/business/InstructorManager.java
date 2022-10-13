@@ -3,14 +3,17 @@ package business;
 import java.util.ArrayList;
 import java.util.List;
 
+import core.logging.Logger;
 import dataAccess.Abstract.InstructorDao;
 import enities.Instructor;
 
 public class InstructorManager {
 	InstructorDao instructorDao;
+	Logger[] loggers;
 	
-	InstructorManager(InstructorDao instructorDao){
+	public InstructorManager(InstructorDao instructorDao, Logger[] loggers){
 		this.instructorDao=instructorDao;
+		this.loggers = loggers;
 	}
 	
 	List<String> instructorNames = new ArrayList<String>();
@@ -24,5 +27,9 @@ public class InstructorManager {
 		
 		instructorDao.add(instructor);
 		instructorNames.add(instructor.getName());
+		
+		for (Logger logger : loggers) {
+			logger.log("Egitmen " + instructor.getName());
+		}
 	};
 }
